@@ -21,7 +21,7 @@ function firstPrompt() {
     .prompt({
       type: "list",
       name: "task",
-      message: "Would you like to do?",
+      message: "What would you like to do?",
       choices: [
         "View Employees",
         "View Employees by Department",
@@ -101,7 +101,7 @@ function viewEmployeeByDepartment() {
     }));
 
     console.table(res);
-    console.log("Department view succeed!\n");
+    console.log("success!\n");
 
     promptDepartment(departmentChoices);
   });
@@ -114,7 +114,7 @@ function promptDepartment(departmentChoices) {
       {
         type: "list",
         name: "departmentId",
-        message: "Which department would you choose?",
+        message: "Which department do you want?",
         choices: departmentChoices
       }
     ])
@@ -134,7 +134,7 @@ function promptDepartment(departmentChoices) {
         if (err) throw err;
 
         console.table("response ", res);
-        console.log(res.affectedRows + "Employees are viewed!\n");
+        console.log(res.affectedRows + "Employees Viewed.\n");
 
         firstPrompt();
       });
@@ -142,7 +142,7 @@ function promptDepartment(departmentChoices) {
 }
 
 function addEmployee() {
-  console.log("Inserting an employee!")
+  console.log("Creating an employee!")
 
   var query =
     `SELECT r.id, r.title, r.salary 
@@ -199,7 +199,7 @@ function promptInsert(roleChoices) {
           if (err) throw err;
 
           console.table(res);
-          console.log(res.insertedRows + "Inserted successfully!\n");
+          console.log(res.insertedRows + "Created successfully!\n");
 
           firstPrompt();
         });
@@ -234,7 +234,7 @@ function promptDelete(deleteEmployeeChoices) {
       {
         type: "list",
         name: "employeeId",
-        message: "Which employee do you want to remove?",
+        message: "Which employee do you want to fire?",
         choices: deleteEmployeeChoices
       }
     ])
